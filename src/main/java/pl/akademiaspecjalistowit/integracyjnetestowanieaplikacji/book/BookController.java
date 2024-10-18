@@ -16,10 +16,10 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @PostMapping
-    public void createBook(@RequestBody BookDto book) {
-        bookService.createBook(book);
-    }
+//    @PostMapping
+//    public void createBook(@RequestBody BookDto book, @RequestHeader("client") String client) {
+//        bookService.createBook(book, client);
+//    }
 
     @GetMapping
     public List<BookDto> getAllBooks() {

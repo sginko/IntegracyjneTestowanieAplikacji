@@ -50,4 +50,22 @@ class BookControllerIntegrationTest {
             .andExpect(status().isOk());
     }
 
+    @Test
+    public void should_create_book_and_get_book() throws Exception{
+        //given
+        BookDto book = new BookDto("Spring Boot", "John Doe");
+
+        //whenthen
+        mockMvc.perform(post("/books")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(book)))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(get("/books/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().json(objectMapper.writeValueAsString(book)));
+    }
+
+
+
 }
