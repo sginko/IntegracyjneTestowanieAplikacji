@@ -9,17 +9,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-
     private final BookService bookService;
 
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
 
-//    @PostMapping
-//    public void createBook(@RequestBody BookDto book, @RequestHeader("client") String client) {
-//        bookService.createBook(book, client);
-//    }
+    @PostMapping
+    public void createBook(@RequestBody BookDto book, @RequestHeader("client") String client) {
+        bookService.createBook(book, client);
+    }
 
     @GetMapping
     public List<BookDto> getAllBooks() {
@@ -32,6 +31,4 @@ public class BookController {
         return book.map(ResponseEntity::ok)
             .orElseGet(() -> ResponseEntity.notFound().build());
     }
-
 }
-

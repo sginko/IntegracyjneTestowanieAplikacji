@@ -1,4 +1,4 @@
-package pl.akademiaspecjalistowit.integracyjnetestowanieaplikacji.book;
+package pl.akademiaspecjalistowit.integracyjnetestowanieaplikacji.notification;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,16 +11,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BookEntity {
+public class NotificationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String clientName;
+    private Long bookId;
 
-    private String title;
-    private String author;
-
-    public BookEntity(String title, String author) {
-        this.title = title;
-        this.author = author;
+    public NotificationEntity(String clientName, Long bookId) {
+        this.clientName = clientName;
+        this.bookId = bookId;
     }
 }
